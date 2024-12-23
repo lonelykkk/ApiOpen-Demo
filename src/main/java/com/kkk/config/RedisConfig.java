@@ -28,8 +28,6 @@ public class RedisConfig<V> {
 
     @Value("${spring.redis.port:}")
     private Integer redisPort;
-    @Value("${spring.redis.password}")
-    private String redisPassword;
 
     @Bean(name = "redissonClient", destroyMethod = "shutdown")
     public RedissonClient redissonClient() {

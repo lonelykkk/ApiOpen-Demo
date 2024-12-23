@@ -1,8 +1,6 @@
 package com.kkk.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.github.pagehelper.Page;
-import com.kkk.domain.dto.PageUserDto;
 import com.kkk.domain.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -19,8 +17,10 @@ public interface UserMapper extends BaseMapper<User>{
 
     void addUser(User user);
 
-    @Select("select * from user where username = #{username}")
-    User getUserByName(String username);
 
-    Page<User> getPage(PageUserDto pageUserDto);
+    //Page<User> getPage(PageUserDto pageUserDto);
+    @Select("select * from user where username = #{username}")
+    User selectByUserName(String username);
+
+    User selectByUserNameAndPassword(String username,String password);
 }

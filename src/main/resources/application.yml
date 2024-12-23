@@ -12,7 +12,6 @@ spring:
     host: localhost
     port: 6379
     database: 0
-    password: 123456
 #配置mysql-plus
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml

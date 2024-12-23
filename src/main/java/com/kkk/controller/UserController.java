@@ -1,6 +1,8 @@
 package com.kkk.controller;
 
 import com.kkk.domain.dto.UserDto;
+import com.kkk.domain.entity.User;
+import com.kkk.result.Result;
 import com.kkk.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,12 +23,14 @@ public class UserController {
     @Autowired
     private UserService userService;
     @PostMapping("/register")
-    public void register(@RequestBody UserDto userDto) {
+    public Result register(@RequestBody UserDto userDto) {
         userService.addUser(userDto);
+        return Result.success("注册成功");
     }
 
     @PostMapping("/login")
-    public void login() {
-
+    public Result<User> login(@RequestBody UserDto userDto) {
+        User user = userService.login(userDto);
+        return Result.success(user);
     }
 }

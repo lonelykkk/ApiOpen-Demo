@@ -112,11 +112,7 @@
         </dependency>
 
         <!--分页查询条件构造器-->
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>1.3.0</version>
-        </dependency>
+
     </dependencies>
 
 
