@@ -2,6 +2,7 @@ package com.kkk.service;
 
 import com.kkk.domain.dto.UserDto;
 import com.kkk.domain.entity.User;
+import com.kkk.domain.vo.UserLoginVo;
 
 /**
  * @author lonelykkk
@@ -12,5 +13,5 @@ import com.kkk.domain.entity.User;
 public interface UserService {
     void addUser(UserDto userDto);
 
-    User login(UserDto userDto);
+    UserLoginVo login(UserDto userDto);
 }

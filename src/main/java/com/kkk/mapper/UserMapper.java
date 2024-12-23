@@ -17,8 +17,6 @@ public interface UserMapper extends BaseMapper<User>{
 
     void addUser(User user);
 
-
-    //Page<User> getPage(PageUserDto pageUserDto);
     @Select("select * from user where username = #{username}")
     User selectByUserName(String username);
 

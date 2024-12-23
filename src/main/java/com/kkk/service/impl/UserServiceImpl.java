@@ -3,6 +3,7 @@ package com.kkk.service.impl;
 import com.kkk.domain.dto.UserDto;
 import com.kkk.domain.entity.User;
 import com.kkk.domain.enums.ResponseCodeEnum;
+import com.kkk.domain.vo.UserLoginVo;
 import com.kkk.exception.BusinessException;
 import com.kkk.mapper.UserMapper;
 import com.kkk.service.UserService;
@@ -29,7 +30,7 @@ public class UserServiceImpl implements UserService {
     @Resource
     private RedisTemplate<String,String> redisTemplate;
     /**
-     * 新增用户
+     * 新增用户/注册
      * @param userDto
      */
     public void addUser(UserDto userDto) {
@@ -45,13 +46,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User login(UserDto userDto) {
+    public UserLoginVo login(UserDto userDto) {
         User user = userMapper.selectByUserNameAndPassword(userDto.getUsername(),userDto.getPassword());
         if (user == null) {
             throw new BusinessException("用户名或密码错误");
         }
         String token = UUID.randomUUID().toString();
-        redisTemplate.opsForValue().set("loginDemouser:token", token);
-        return user;
+        redisTemplate.opsForValue().set("loginDemo:user:token:" + token, user.getId().toString());
+        UserLoginVo userLoginVo = new UserLoginVo();
+        userLoginVo.setUser(user);
+        userLoginVo.setToken(token);
+        return userLoginVo;
     }
 }

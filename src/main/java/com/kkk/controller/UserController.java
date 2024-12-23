@@ -2,6 +2,7 @@ package com.kkk.controller;
 
 import com.kkk.domain.dto.UserDto;
 import com.kkk.domain.entity.User;
+import com.kkk.domain.vo.UserLoginVo;
 import com.kkk.result.Result;
 import com.kkk.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public Result<User> login(@RequestBody UserDto userDto) {
-        User user = userService.login(userDto);
-        return Result.success(user);
+    public Result<UserLoginVo> login(@RequestBody UserDto userDto) {
+        UserLoginVo userLoginVo = userService.login(userDto);
+        return Result.success(userLoginVo);
     }
 }

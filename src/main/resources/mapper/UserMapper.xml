@@ -24,13 +24,5 @@
             </if>
         </where>
     </select>
-    <!--  <select id="getPage" resultType="com.kkk.domain.entity.User">
-          select * from user
-          <where>
-              <if test="name !=null and name != ''">
-                  and username like concat('%',#{name},'%')
-              </if>
-          </where>
-      </select>-->
 
 </mapper>
